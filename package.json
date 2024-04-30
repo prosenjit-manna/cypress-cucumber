@@ -1,0 +1,19 @@
+{
+  "name": "cypress-automation-login",
+  "version": "1.0.0",
+  "description": "",
+  "scripts": {
+    "start": "cypress open"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "@badeball/cypress-cucumber-preprocessor": "^20.0.5",
+    "@bahmutov/cypress-esbuild-preprocessor": "^2.2.0",
+    "cypress": "^13.8.1"
+  },
+  "devDependencies": {
+    "typescript": "^5.4.5"
+  }
+}
