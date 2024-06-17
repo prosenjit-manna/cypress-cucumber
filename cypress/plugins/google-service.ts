@@ -22,7 +22,6 @@ export async function updateGoogleSheetCell({ rows, sheetId, tabName, range }: {
     values: rows,
   };
 
-  console.log('Writing to sheet', sheetId, tabName, range, resource);
 
   const res = await sheets.spreadsheets.values.update({
     spreadsheetId: sheetId,
