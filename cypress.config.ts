@@ -2,12 +2,13 @@ import { defineConfig } from "cypress";
 import createBundler from "@bahmutov/cypress-esbuild-preprocessor";
 import { addCucumberPreprocessorPlugin } from "@badeball/cypress-cucumber-preprocessor";
 import { createEsbuildPlugin } from "@badeball/cypress-cucumber-preprocessor/esbuild";
+import { updateGoogleSheetCell } from "./cypress/plugins/google-service";
 
 export default defineConfig({
   experimentalStudio: true,
 
   e2e: {
-    baseUrl: 'http://128.198.49.198:8102',
+    baseUrl: 'http://localhost:3030',
     experimentalStudio: true,
     specPattern: "**/*.feature",
     async setupNodeEvents(
@@ -23,6 +24,15 @@ export default defineConfig({
           plugins: [createEsbuildPlugin(config)],
         })
       );
+
+
+      on('task', {
+        readFileMaybe(options) {
+          updateGoogleSheetCell(options);
+
+          return null
+        },
+      })
 
       // Make sure to return the config object as it might have been modified by the plugin.
       return config;
